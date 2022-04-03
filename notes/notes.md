@@ -163,15 +163,17 @@ pip install -r requirements.txt
 -> Setting up your Web app and WSGI file
 
 ```
+/home/LolaPwa/django
 Source code: /home/peppa/porto
 
 Working directory: /home/peppa/
-
+                            /home/LolaPwa/.virtualenvs/env
 Virtual Environtment Path: /home/peppa/.virtualenvs/env
 
-# Paths
+# Paths     /home/LolaPwa/django/static/
 /static/	/home/peppa/porto/static_root/
 
+         /home/LolaPwa/django/media_root/
 /media/	/home/peppa/porto/media_root/
 
 ```
