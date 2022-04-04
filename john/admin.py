@@ -35,9 +35,10 @@ admin.site.register(Portfolio)
 
 # contact
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ['name', 'email', 'created_at']
-    search_fields = ['name','email']
-    list_per_page = 6
+  list_display = ['name', 'email', 'created_at']
+  search_fields = ['name','email']
+  list_per_page = 6
+
 admin.site.register(Contact, ContactAdmin)
 
 

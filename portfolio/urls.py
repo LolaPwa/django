@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 from john import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('john.urls')),
+    #path('', include('john.urls')),
     path('', views.index, name="index"),
     path('contact', views.contact, name="contact")
     #path('send_mail', views.send_mail, name="send_mail")

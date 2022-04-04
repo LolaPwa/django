@@ -143,15 +143,15 @@
                     </div>
                     
                    
-                    <form action="https://formsubmit.co/lolapwasaga.tec@gmail.com" method="POST" class ="contact__form">
+                    <form action="/contact" method="POST" class ="contact__form">
                         {%csrf_token%}
                         <div class="contact__inputs">
-                            <input type="text" name = "name" placeholder="Full Name" required class="contact__input">
-                            <input type="email" name = "email" placeholder="Email" required  class="contact__input">
+                            <input type="text" name = "name" placeholder="Full Name"  class="contact__input" required>
+                            <input type="email" name = "email" placeholder="Email"  class="contact__input" required>
                            
                         </div>
                        
-                        <textarea name="Message" placeholder="Message" required id="" cols="0" rows="10" class="contact__input"></textarea>
+                        <textarea name="message" placeholder="message" id="" cols="0" rows="10" class="contact__input" required></textarea>
                         
                         <input type="submit" value="Submit" class="contact__button">
                     </form> 
@@ -201,7 +201,7 @@
    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
 </script>
 
-<script>
+<!--<script>
 $(document).ready(function(){
     $("#exampleModal").modal('show');
 });
@@ -209,8 +209,8 @@ $(document).ready(function(){
 
    
    {%endif%}
-{%endfor%}
-<!-- Modal -->
+{%endfor%} -->
+<!-- Modal
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -238,7 +238,7 @@ $(document).ready(function(){
       </div>
     </div>
   </div>
-
+ -->
 
     </body>
 

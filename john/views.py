@@ -2,12 +2,14 @@ from unicodedata import name
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from .models import Home, About, Profile, Category, Portfolio, Contact
-#from .models import Contact
+from .models import Home, About, Profile, Category, Portfolio
+
 from django.core.mail import send_mail
-from django.contrib import messages
+
 from django.template import loader
 from django.core.mail import EmailMultiAlternatives
+from .models import Contact
+
 def index(request):
 
     # Home
@@ -22,7 +24,8 @@ def index(request):
 
     # Portfolio
     portfolios = Portfolio.objects.all()
-    
+
+
 
     context = {
        'home': home,
@@ -30,42 +33,55 @@ def index(request):
         'profiles': profiles,
         'categories': categories,
         'portfolios': portfolios
+        
     }
 
+    return render(request, 'index.html', context)  
 
-    return render(request, 'index.html', context)
+
+#def contact(request):
+ #    if request.method=="POST":
+  #      contact=Contact()
+   #     name=request.POST.get('name')
+    #    email=request.POST.get('email')
+     #   message=request.POST.get('message')
+      #  contact.name=name
+       # contact.email=email
+        #contact.message=message
+        #contact.save()
+        #return HttpResponse("<h1> Thanks for contacting me</h1>")
+
 
 def contact(request):
         if request.method == "POST":
-              contact = Contact(name=request.POST.get('name'), email=request.POST.get('email'),
-              message=request.POST.get('message'))
-              contact.save()
+         contact = Contact(name = request.POST.get('name'), email = request.POST.get('email'), message = request.POST.get('message'))
+         contact.save()
 
-              messages.success (request, "message sent successfully !")
-              return HttpResponseRedirect('/')
+         messages.success (request, "message sent successfully !")
+         return HttpResponseRedirect('/')
 
-def send_mail(request):
-    name = request.POST.get('name')
-    email = request.POST.get('email')
-    message = request.POST.get('message')
+#def send_mail(request):
+    #name = request.POST.get('name')
+    #email = request.POST.get('email')
+    #message = request.POST.get('message')
 
-    template = loader.get_template('contact_form.txt')
-    context = {
-        'name' : name,
-        'email' : email,
-        'message' : message,
-    }
-    message = template.render(context)
-    emil = EmailMultiAlternatives(
-        "Portfolio (message)", message,
-        "New messages " + "- Customers",
-        ['lolapwasanga.tech@gmail.com, email]']
-    )
+    #template = loader.get_template('contact_form.txt')
+    #context = {
+       # 'name' : name,
+      #  'email' : email,
+     #   'message' : message,
+    #}
+    #message = template.render(context)
+    #emil = EmailMultiAlternatives(
+       # "Portfolio (message)", message,
+      #  "New messages " + "- Customers",
+     #   ['lolapwasanga.tech@gmail.com, email]']
+    #)
 
-    email.content_subtype = 'html'
-    email.send()
-    messages.success(request, ',' )
-    return HttpResponseRedirect('/')
+    #email.content_subtype = 'html'
+    #email.send()
+    #messages.success(request, ',' )
+   # return HttpResponseRedirect('/') 
 
 
 
